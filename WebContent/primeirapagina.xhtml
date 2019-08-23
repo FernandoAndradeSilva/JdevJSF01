@@ -11,11 +11,18 @@
 </h:head>
 
 	
-	<h:form>
+	<h:form id="form">
+		<h1>Olá JSF</h1>
 		
-		<h:outputLabel value="AA"></h:outputLabel>
-	
-	
+		Nome:
+		<h:inputText id="campoNome" value="#{pessoaBean.nome}"/>
+		<h:commandButton value="Adicionar Nome" action="#{pessoaBean.addNome}"/>
+
+		<h:dataTable value="#{pessoaBean.nomes}" var="nome">
+			<h:column>
+				<h:outputText value="#{nome}"/>
+			</h:column>		
+		</h:dataTable>
 	
 	</h:form>
 	

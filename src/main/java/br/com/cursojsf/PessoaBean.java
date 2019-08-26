@@ -5,18 +5,34 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.html.HtmlCommandButton;
 
-@ManagedBean(name = "pessoaBean")
+
 @ViewScoped
+@ManagedBean(name = "pessoaBean")
 public class PessoaBean {
 	
 	private String nome;
+	
+	private String senha;
+	
+	private String texto;
+	
+	
+	private HtmlCommandButton commandButton;
 	
 	private List<String> nomes = new ArrayList<>();
 	
 	public String addNome() {
 		nomes.add(nome);
+		
+		if (nomes.size() > 3) {
+			this.commandButton.setDisabled(true);
+			return "paginanavegada?faces-redirect=true";
+		}
+		
 		return "";
 	}
 		
@@ -35,6 +51,31 @@ public class PessoaBean {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public HtmlCommandButton getCommandButton() {
+		return commandButton;
+	}
+
+	public void setCommandButton(HtmlCommandButton commandButton) {
+		this.commandButton = commandButton;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+	
 	
 
 	
